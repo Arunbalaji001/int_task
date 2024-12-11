@@ -14,36 +14,22 @@ class _HomePageState extends State<HomePage> {
 
   bool isScan = true ;
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey.shade50,
         title: Text(
           'QR App',
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: Theme.of(context).textTheme.bodyMedium?.apply(
+            fontWeightDelta: 2
+          ),
         ),
       ),
       body: Container(
         alignment: Alignment.center,
-        child: Column(
-          children: [
-            Row(
-              children: [
-                ButtonWidget(
-                    name: 'Scan', onTapped: () {
-                    setState((){isScan = true;});
-                    },),
-                ButtonWidget(
-                  name: 'Create', onTapped: () {
-                  setState((){isScan = true;});
-                },),
-              ],
-            ),
-            isScan?
-            const ScannerWidget():
-                const QrGeneratorWidget(),
-          ],
-        ),
+        child: const QrGeneratorWidget(),
       ),
     );
   }
